@@ -8,11 +8,11 @@ import (
 )
 
 const (
-	MODE_UPPER       = iota + 1                //全部单词转为大写
-	MODE_LOWER								   //全部单词转为小写
-	MODE_UNDERSCORE_TO_UPPER_CAMELCASE         //下划线单词转为大写驼峰单词
-	MODE_UNDERSCORE_TO_LOWER_CAMELCASE         //下划线单词转为小写驼峰单词
-	MODE_CAMELCASE_TO_UNDERSCORE               //驼峰单词转为下划线单词
+	ModeUpper                      = iota + 1 //全部单词转为大写
+	ModeLower                                 //全部单词转为小写
+	ModeUnderscoreToUpperCamelcase            //下划线单词转为大写驼峰单词
+	ModeUnderscoreToLowerCamelcase            //下划线单词转为小写驼峰单词
+	ModeCamelcaseToUnderscore                 //驼峰单词转为下划线单词
 )
 
 var desc = strings.Join([]string{
@@ -35,15 +35,15 @@ var wordCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		var content string
 		switch mode {
-		case MODE_UPPER:
+		case ModeUpper:
 			content = word.ToUpper(str)
-		case MODE_LOWER:
+		case ModeLower:
 			content = word.ToLower(str)
-		case MODE_CAMELCASE_TO_UNDERSCORE:
+		case ModeCamelcaseToUnderscore:
 			content = word.CamelCaseToUnderScore(str)
-		case MODE_UNDERSCORE_TO_UPPER_CAMELCASE:
+		case ModeUnderscoreToUpperCamelcase:
 			content = word.UnderScoreToUpperCamelCase(str)
-		case MODE_UNDERSCORE_TO_LOWER_CAMELCASE:
+		case ModeUnderscoreToLowerCamelcase:
 			content = word.UnderScoreToLowerCamelCase(str)
 		default:
 			log.Fatalf("暂不支持该种转换方式,请执行help word查看帮助")

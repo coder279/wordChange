@@ -28,7 +28,7 @@ func UnderScoreToLowerCamelCase(s string) string{
 	return string(unicode.ToLower(rune(s[0]))) + s[1:]
 }
 
-// 驼峰单词转为下划线
+// CamelCaseToUnderScore 驼峰单词转为下划线
 func CamelCaseToUnderScore(s string) string {
 	var output []rune
 	for i,r := range s {
